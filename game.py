@@ -36,6 +36,7 @@ while menu != '4':
             terminou = False
 
             while not terminou:
+                # print Tabuleiro 
                 print("\n    1 2 3")
                 for linha in range(3):
                     print(linha + 1, "|", end=" ")
