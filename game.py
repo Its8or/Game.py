@@ -75,6 +75,37 @@ while menu != '4':
                    jogador = 'O'
                 else:
                     jogador = 'X'
+                
+                # Contar as marcas do jogador em cada linha e coluna.
+                    venceu = False
+                    for i in range(3):
+                        iguais_linha = 0
+                        iguais_coluna = 0
+                        for j in range(3):
+                            if grid[i][j] == jogador:
+                                iguais_linha += 1
+                            if grid[j][i] == jogador:
+                                iguais_coluna += 1
+                        if iguais_linha == 3 or iguais_coluna == 3:
+                            venceu = True
+
+                    # Percorrer as duas diagonais.
+                    diagonal_principal = 0
+                    diagonal_secundaria = 0
+                    for i in range(3):
+                        if grid[i][i] == jogador:
+                            diagonal_principal += 1
+                        if grid[i][2 - i] == jogador:
+                            diagonal_secundaria += 1
+                    if diagonal_principal == 3 or diagonal_secundaria == 3:
+                        venceu = True
+
+                    # Procurar casas vazias para identificar o empate.
+                    vazias = 0
+                    for i in range(3):
+                        for j in range(3):
+                            if grid[i][j] == ".":
+                                vazias += 1
 
             # decisão para jogar novamente
             novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
