@@ -67,12 +67,6 @@ while menu != '4':
                         print("Posição ocupada, tente novamente.")
                         continue
                     break
-                    
-                grid[linha][coluna] = jogador    
-                if jogador == 'X':
-                   jogador = 'O'
-                else:
-                    jogador = 'X'
                 
                 # Contar as marcas do jogador em cada linha e coluna.
                     venceu = False
@@ -104,6 +98,23 @@ while menu != '4':
                         for j in range(3):
                             if grid[i][j] == ".":
                                 vazias += 1
+
+                    # Conferir vitória antes de empate, inclusive na última jogada.
+                    if venceu:
+                        print("\nJogador", jogador, "ganhou!")
+                        if jogador == "X":
+                            vitorias_x += 1
+                        else:
+                            vitorias_o += 1
+                        terminou = True
+                    elif vazias == 0:
+                        print("\nEmpate!")
+                        empates += 1
+                        terminou = True
+                    elif jogador == "X":
+                        jogador = "O"
+                    else:
+                        jogador = "X"
 
             # decisão para jogar novamente
             novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
