@@ -3,8 +3,6 @@
 # ====================
 
 # TODO: 
-# Leitura das jogadas com validação
-# Verificação de vitória e empate
 # Placar acumulado
 
 # Variaveis para estatisticas
