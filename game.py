@@ -46,18 +46,35 @@ while menu != '4':
 
                 print("Vez do jogador", jogador)
 
-                # Aceitar somente as opções válidas antes da conversão.
-                entrada = input("Linha (1 a 3): ")
-                while entrada != "1" and entrada != "2" and entrada != "3":
-                    print("Digite 1, 2 ou 3.")
+                while True:
                     entrada = input("Linha (1 a 3): ")
-                linha = int(entrada) - 1
 
-                entrada = input("Coluna (1 a 3): ")
-                while entrada != "1" and entrada != "2" and entrada != "3":
-                    print("Digite 1, 2 ou 3.")
+
+                    while entrada != "1" and entrada != "2" and entrada != "3":
+                        print("Digite 1, 2 ou 3.")
+                        entrada = input("Linha (1 a 3): ")
+
+
+                    linha = int(entrada) - 1
+
                     entrada = input("Coluna (1 a 3): ")
-                coluna = int(entrada) - 1
+
+                    while entrada != "1" and entrada != "2" and entrada != "3":
+                        print("Digite 1, 2 ou 3.")
+                        entrada = input("Coluna (1 a 3): ")
+
+                    coluna = int(entrada) - 1
+
+                    if grid[linha][coluna] != ".":
+                        print("Posição ocupada, tente novamente.")
+                        continue
+                    break
+                    
+                grid[linha][coluna] = jogador    
+                if jogador == 'X':
+                   jogador = 'O'
+                else:
+                    jogador = 'X'
 
             # decisão para jogar novamente
             novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
