@@ -63,8 +63,7 @@ while menu != '4':
             novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
 
     elif menu == '2':
-        # Todo: Adicionar Regras (remova o pass apos construir lógica)
-        pass
+        print("""\n==================================\n             REGRAS\n==================================\n1. Escolha a linha (1 a 3)\n2. Escolha a coluna (1 a 3)\n3. O outro jogador repete os passos 1 e 2.\n4. O jogador que colocar 3 casas juntas ganha.""")
 
     elif menu == '3':
         print("\n=== PLACAR ACUMULADO ===")
