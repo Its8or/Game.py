@@ -46,25 +46,96 @@ while menu != '4':
 
                 print("Vez do jogador", jogador)
 
-                # Aceitar somente as opções válidas antes da conversão.
-                entrada = input("Linha (1 a 3): ")
-                while entrada != "1" and entrada != "2" and entrada != "3":
-                    print("Digite 1, 2 ou 3.")
+                while True:
                     entrada = input("Linha (1 a 3): ")
-                linha = int(entrada) - 1
 
-                entrada = input("Coluna (1 a 3): ")
-                while entrada != "1" and entrada != "2" and entrada != "3":
-                    print("Digite 1, 2 ou 3.")
+
+                    while entrada != "1" and entrada != "2" and entrada != "3":
+                        print("Digite 1, 2 ou 3.")
+                        entrada = input("Linha (1 a 3): ")
+
+
+                    linha = int(entrada) - 1
+
                     entrada = input("Coluna (1 a 3): ")
-                coluna = int(entrada) - 1
+
+                    while entrada != "1" and entrada != "2" and entrada != "3":
+                        print("Digite 1, 2 ou 3.")
+                        entrada = input("Coluna (1 a 3): ")
+
+                    coluna = int(entrada) - 1
+
+                    if grid[linha][coluna] != ".":
+                        print("Posição ocupada, tente novamente.")
+                        continue
+                    break
+                
+                grid[linha][coluna] = jogador
+
+                # Verificar linhas, colunas e diagonais do jogador que acabou de jogar.
+                venceu = False
+                for i in range(3):
+                    iguais_linha = 0
+                    iguais_coluna = 0
+                    for j in range(3):
+                        if grid[i][j] == jogador:
+                            iguais_linha += 1
+                        if grid[j][i] == jogador:
+                            iguais_coluna += 1
+                    if iguais_linha == 3 or iguais_coluna == 3:
+                        venceu = True
+
+                diagonal_principal = 0
+                diagonal_secundaria = 0
+                for i in range(3):
+                    if grid[i][i] == jogador:
+                        diagonal_principal += 1
+                    if grid[i][2 - i] == jogador:
+                        diagonal_secundaria += 1
+                if diagonal_principal == 3 or diagonal_secundaria == 3:
+                    venceu = True
+
+                vazias = 0
+                for i in range(3):
+                    for j in range(3):
+                        if grid[i][j] == ".":
+                            vazias += 1
+
+                # Conferir vitória antes de empate, inclusive na última jogada.
+                if venceu:
+                    print("\nJogador", jogador, "ganhou!")
+                    if jogador == "X":
+                        vitorias_x += 1
+                    else:
+                        vitorias_o += 1
+                    terminou = True
+                elif vazias == 0:
+                    print("\nEmpate!")
+                    empates += 1
+                    terminou = True
+                elif jogador == "X":
+                    jogador = "O"
+                else:
+                    jogador = "X"
+
+            # Mostrar a última jogada e o placar ao terminar a partida.
+            print("\n    1 2 3")
+            for linha in range(3):
+                print(linha + 1, "|", end=" ")
+                for coluna in range(3):
+                    print(grid[linha][coluna], end=" ")
+                print()
+            print("Placar: X =", vitorias_x, "| O =", vitorias_o,
+                  "| Empates =", empates)
 
             # decisão para jogar novamente
-            novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
+            novamente = input("Jogar novamente? 1 - Sim | 0 - Voltar ao menu: ")
+            while novamente != "1" and novamente != "0":
+                print("Digite 1 ou 0.")
+                novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
 
     elif menu == '2':
-        # Todo: Adicionar Regras (remova o pass apos construir lógica)
-        pass
+        print("""\n==================================\n             REGRAS\n==================================\n1. Escolha a linha (1 a 3)\n2. Escolha a coluna (1 a 3)\n3. O outro jogador repete os passos 1 e 2.\n4. O jogador que colocar 3 casas juntas ganha.""")
 
     elif menu == '3':
         print("\n=== PLACAR ACUMULADO ===")
