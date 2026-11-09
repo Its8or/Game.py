@@ -2,11 +2,6 @@
 # GAME: Jogo da Velha (com Modificador de estatisticas)
 # ====================
 
-# TODO: 
-# Leitura das jogadas com validação
-# Verificação de vitória e empate
-# Placar acumulado
-
 # Variaveis para estatisticas
 vitorias_x = 0
 vitorias_o = 0
@@ -49,11 +44,9 @@ while menu != '4':
                 while True:
                     entrada = input("Linha (1 a 3): ")
 
-
                     while entrada != "1" and entrada != "2" and entrada != "3":
                         print("Digite 1, 2 ou 3.")
                         entrada = input("Linha (1 a 3): ")
-
 
                     linha = int(entrada) - 1
 
@@ -135,7 +128,14 @@ while menu != '4':
                 novamente = input('Jogo encerrado, gostaria de recomeçar (1 para sim, outro para não)? ')
 
     elif menu == '2':
-        print("""\n==================================\n             REGRAS\n==================================\n1. Escolha a linha (1 a 3)\n2. Escolha a coluna (1 a 3)\n3. O outro jogador repete os passos 1 e 2.\n4. O jogador que colocar 3 casas juntas ganha.""")
+        print("\n=== REGRAS ===")
+        print("Dois jogadores alternam entre X e O. X começa cada partida.")
+        print("Escolha uma linha e uma coluna de 1 a 3.")
+        print("Só é permitido jogar em casas vazias, indicadas por ponto.")
+        print("Vence quem completar uma linha, coluna ou diagonal com 3 marcas.")
+        print("Se o tabuleiro ficar cheio sem vencedor, a partida empata.")
+        print("Jogadas inválidas não fazem o jogador perder a vez.")
+        print("O placar é mantido até sair do programa.")
 
     elif menu == '3':
         print("\n=== PLACAR ACUMULADO ===")
