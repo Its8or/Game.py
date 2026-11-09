@@ -1,27 +1,21 @@
-# Game.py
+# Jogo da Velha
 
-Jogo da Velha em Python, desenvolvido como projeto acadêmico para praticar lógica de programação, manipulação de listas e interação com o usuário no console.
+Projeto acadêmico desenvolvido em Python para praticar lógica de programação por meio de um jogo da velha para dois jogadores, executado no terminal.
 
-## Descrição
+## Requisitos
 
-Este projeto implementa um jogo de Jogo da Velha (Tic-Tac-Toe) em Python puro, sem uso de bibliotecas externas. O jogo inclui:
-
-- menu principal com opções de jogar, regras e placar;
-- validação de entradas do usuário;
-- alternância entre os jogadores X e O;
-- verificação de vitória e empate;
-- contador acumulado de vitórias e empates;
-- opção de reiniciar a partida ou voltar ao menu.
+- Python 3
+- Nenhuma biblioteca externa
 
 ## Como executar
 
-No terminal, dentro da pasta do projeto, execute:
+No terminal, acesse a pasta do projeto e execute:
 
 ```bash
 python game.py
 ```
 
-Ou, em algumas máquinas:
+Se necessário, use:
 
 ```bash
 python3 game.py
@@ -29,23 +23,41 @@ python3 game.py
 
 ## Como jogar
 
-1. Escolha a opção `1` no menu para iniciar uma partida.
-2. Informe a linha e a coluna onde deseja marcar.
-3. As coordenadas válidas vão de `1` a `3`.
-4. O primeiro jogador usa `X` e o segundo usa `O`.
-5. O jogador que alinhar três casas em linha, coluna ou diagonal vence.
+O menu principal oferece estas opções:
 
-## Regras
+| Opção | Ação |
+| --- | --- |
+| `1` | Iniciar uma partida |
+| `2` | Consultar as regras |
+| `3` | Consultar o placar acumulado |
+| `4` | Encerrar o programa |
 
-- Cada jogada deve ocorrer em uma casa vazia.
-- A linha e a coluna devem estar entre 1 e 3.
-- Se todas as casas forem preenchidas sem um vencedor, o resultado é empate.
+O jogador `X` começa. Em cada turno, os jogadores informam uma linha e uma coluna entre `1` e `3`. Uma posição ocupada ou uma coordenada inválida não consome a vez. Ao terminar a partida, escolha `1` para jogar novamente ou `0` para retornar ao menu.
 
-## Estrutura do projeto
+Vence quem completar uma linha, coluna ou diagonal com três marcas. Se o tabuleiro for preenchido sem um vencedor, a partida termina empatada.
 
-- `game.py`: código principal do jogo.
-- `README.md`: documentação do projeto.
+## Conteúdos de programação aplicados
 
-## Status
+- **Tipos de dados e variáveis:** textos para as opções do menu, entradas e símbolos dos jogadores; números inteiros para coordenadas, contadores e placar; valores booleanos para controlar o estado da partida.
+- **Operadores aritméticos, relacionais e lógicos:** conversão das coordenadas para índices, contagem das marcas, comparação de valores e validação de entradas com condições lógicas.
+- **Estruturas de decisão (`if`, `elif`, `else`):** seleção das opções do menu, validação de jogadas e identificação de vitória, empate ou troca de jogador.
+- **Estruturas de repetição (`while`, `for` e `range()`):** execução do menu e das partidas, repetição da leitura até uma entrada válida e percurso das casas para exibir e verificar o tabuleiro.
+- **Matrizes e `for` aninhado:** o tabuleiro é representado por uma lista de listas; os percursos aninhados exibem e atualizam as casas e verificam linhas, colunas, diagonais e espaços vazios.
 
-Projeto finalizado como uma versão funcional de console, com foco em lógica e experiência de aprendizado.
+O placar mantém a quantidade de vitórias de `X`, vitórias de `O` e empates enquanto o programa estiver aberto. Ele não é salvo após o encerramento. Esta versão não calcula percentuais.
+
+## Restrições do projeto
+
+O programa utiliza os conteúdos básicos estudados: variáveis, operadores, decisões, repetições, matrizes e funções nativas como `print()`, `input()` e `int()`. Não utiliza funções definidas pelo aluno (`def` ou `lambda`), dicionários, tuplas, conjuntos, listas de uma dimensão como vetores independentes, métodos de lista ou texto, compreensão de listas, bibliotecas externas, tratamento de exceções (`try/except`), classes ou orientação a objetos.
+
+## Colaboradores e responsabilidades
+
+As responsabilidades abaixo foram identificadas a partir do histórico de commits do projeto:
+
+- **Heitor Terto (Heitor Oliveira Terto):** iniciou a estrutura do jogo e implementou o tabuleiro em matriz, o menu, o placar acumulado, as regras, a validação de entradas e jogadas, além da lógica de vitória, empate e alternância de turnos. Também realizou correções e ajustes nessas funcionalidades.
+- **Vinicius:** contribuiu com a implementação inicial da interação para as jogadas no tabuleiro e participou, como coautor, das alterações de validação de entradas e jogadas.
+
+## Arquivos
+
+- `game.py` — código-fonte do jogo.
+- `README.md` — documentação do projeto.
